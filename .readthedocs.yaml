@@ -1,18 +1,18 @@
-version: "2"
-
-build:
-  os: "ubuntu-22.04"
-  tools:
-    python: "3.10"
-
+version: 2
+sphinx:
+  builder: dirhtml  # A fallback in case of any other static site files
 python:
   install:
-    - requirements: docs/requirements.txt
-
-sphinx:
-  configuration: docs/source/conf.py
-
+    - method: pip
+      path: .
+    - requirements: docs/requirements.txt  # Optional if you have extra requirements
+build:
+  os: ubuntu-20.04
+  tools:
+    python: "3.8"
 jobs:
+  pre_build:
+    - pip install ford  # Install FORD if needed
   build:
-      # Ensure FORD-generated HTML files are included in the output
-      output_base: docs
+    - ford Documentation.md  # This line runs FORD to regenerate the docs if needed
+
