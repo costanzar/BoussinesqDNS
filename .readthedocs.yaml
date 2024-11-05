@@ -3,8 +3,13 @@ build:
   os: ubuntu-20.04
   tools:
     python: "3.8"
-  jobs:
-    pre_build:
-      - pip install ford
-    build:
-      - ford Documentation.md
+python:
+  install:
+    - method: pip
+      path: .
+    - requirements: docs/requirements.txt  # Optional, if you have any extra dependencies
+commands:
+  - pip install ford  # Install FORD
+  - ford Documentation.md -o docs  # Run FORD to generate documentation into the docs/ directory
+sphinx:
+  builder: dirhtml  # This helps RTD recognize and serve static HTML files
