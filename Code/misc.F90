@@ -1,9 +1,7 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module contains Normal Mode Decomposition as described in Bartello, 1995, J. Atmos. Sci.  !!
-!! The subroutines in this module: wtoab, atowb                                                   !!
-!! Modules used : param.F90 and velvorproj.F90                                                    !!
-!! Required for: ncf2Dspc.F90 boussinesq.F90 (main file)                                          !!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module contains Normal Mode Decomposition as described in Bartello, 1995, J. Atmos. Sci.
+!! The subroutines in this module: wtoab, atowb
+!! Modules used : param.F90 and velvorproj.F90
+!! Required for: ncf2Dspc.F90 boussinesq.F90 (main file)
 
 module misc
   use param

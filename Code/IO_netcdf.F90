@@ -1,9 +1,7 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module contains function used to read the main field from a restart file or             !!
-!! store the field for future restarts. Everything is in NetCDF format                          !!
-!! ncreadin may be used in init_condition.F90 to generate the Initial Condition                 !!
-!! ncdumpout used in the main code (boussinesq.F90) to create the output for future restarts    !!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module contains functions used to read the main field from a restart file or
+!! store the field for future restarts. Everything is in NetCDF format.
+!! ncreadin may be used in init_condition.F90 to generate the Initial Condition.
+!! ncdumpout is used in the main code (boussinesq.F90) to create the output for future restarts.
 
 module IO_netcdf
   use param

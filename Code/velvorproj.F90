@@ -1,10 +1,8 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module contains the conversion between vorticity and velocity (VELOCITY <--> VORTICITY) !!
-!! And also determines the solenoidal part of vorticity field                                   !!
-!! -->  Note that vorticity has to solenoindal since it is the curl of velocity                 !!
-!! The subroutines in this module: velo, vort, proj                                             !!
-!! One of the essential parts of the code that cannot be eliminated even in lightest version    !!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module contains the conversion between vorticity and velocity (VELOCITY <--> VORTICITY)
+!! And also determines the solenoidal part of vorticity field
+!! -->  Note that vorticity has to be solenoidal since it is the curl of velocity
+!! The subroutines in this module: velo, vort, proj
+!! One of the essential parts of the code that cannot be eliminated even in the lightest version
 
 module velvorproj
   use param

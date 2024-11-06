@@ -1,8 +1,6 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module contains the forcing and all related functions                                     !!
-!! It can force the waves or geostrophic or all modes                                             !!
-!! See Waite 2017 Physics of Fluids for more details on forcing scheme                            !!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module contains the forcing and all related functions
+!! It can force the waves or geostrophic or all modes
+!! See Waite 2017 Physics of Fluids for more details on forcing scheme
 
 module forcing
   use param

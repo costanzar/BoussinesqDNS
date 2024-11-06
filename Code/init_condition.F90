@@ -1,9 +1,7 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module generates Initial Conditions (IC) for vorticity and temperature (buoyancy) fields  !!
-!! It can read a NetCDF as IC                                                                     !!
-!! or generated IC based on a description in physical or Fourier space                            !!
-!! or IC can be a superposition of the above                                                      !!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module generates Initial Conditions (IC) for vorticity and temperature (buoyancy) fields.
+!! It can read a NetCDF as IC.
+!! It can generate IC based on a description in physical or Fourier space.
+!! IC can be a superposition of the above.
 
 module init_condition
 !  use param

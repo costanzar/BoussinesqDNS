@@ -1,8 +1,6 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module contains Normal Mode Decomposition as described in Bartello, 1995                !!
-!! The subroutines in this module: wtoab, atowb                                                 !!
-!! Modules used : param.F90 and velvorproj.F90                                                  !!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module contains Normal Mode Decomposition as described in Bartello, 1995
+!! The subroutines in this module: wtoab, atowb
+!! Modules used : param.F90 and velvorproj.F90
 
 module nm_decomp
 !  use param

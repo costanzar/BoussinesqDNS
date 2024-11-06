@@ -1,10 +1,10 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
-!! This module dumps subspaces of real (physcial) space in the file 'realspace.ncf'             !!
-!! At the moment is limited to 2D slices in physical(real) but can be extended to 3D subsets    !!
-!! It can be customised to store one of the fields below                                        !!
-!! vorticity component, temperature, velocity component                                         !!
-!! other fields can also be stored                                                              !! 
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ !!
+!> This module dumps subspaces of real (physical) space in the file 'realspace.ncf'
+!! At the moment it is limited to 2D slices in physical (real) space but can be extended to 3D subsets.
+!! It can be customized to store one of the fields below:
+!! - vorticity component
+!! - temperature
+!! - velocity component
+!! Other fields can also be stored.
 
 module realspacedumps2
   use param
