@@ -6,6 +6,6 @@ author: Costanza Rodda
 preprocessor: true
 
 exclude: boussinesq.F90
-exclude: IO_netcdf.F90
+exclude: IO_netcdf.F90, nm_decomp.F90
 
 
