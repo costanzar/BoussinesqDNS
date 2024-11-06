@@ -5,7 +5,5 @@ build:
   tools:
     python: "3.10"
   commands:
-    - ford Documentation.md -o docs  # Run FORD to generate HTML into the docs/ directory
-python:
-  install:
-    - requirements: requirements.txt
+    - pip install ford  # Explicitly install FORD
+    - ford Documentation.md -o docs  # Run FORD to generate documentation into the docs/ directory
