@@ -190,8 +190,17 @@ subroutine out_eng(zx,zy,zz,tt,ux,uy,uz,ge,g1,g2,zxwv,zywv,zzwv,ttwv,nt)
   epspv  = 2.*epspv
   eg     = eg + zero_kz_geo + zero_kh_geo
   ea     = ea + zero_kz_grv + zero_kh_grv
-  if (aj.ne.0. .and. bj.ne.0.) pe = aj*pe/bj
-  if (aj.ne.0. .and. bj.ne.0.) pewv = aj*pewv/bj
+if (aj.ne.0. .and. bj.ne.0.) then
+  pe = aj*pe/bj
+else
+  pe = 0.0
+endif
+
+if (aj.ne.0. .and. bj.ne.0.) then
+  pewv = aj*pewv/bj
+else
+  pewv = 0.0
+endif
 
   call mpi_reduce(ke,tmp,1,MPI_REAL,MPI_SUM,0,MPI_COMM_WORLD,istatus);          ke=tmp
   call mpi_reduce(pe,tmp,1,MPI_REAL,MPI_SUM,0,MPI_COMM_WORLD,istatus);          pe=tmp
