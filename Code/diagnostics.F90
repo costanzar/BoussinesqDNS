@@ -1,9 +1,3 @@
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!
-!! This module contains the diagnostics such as eng time series, energy and transfer spectra    !!
-!! as well as outputing run.list                                                                !!
-!! One of the essential parts of the code that cannot be eliminated even in the lightest version!!
-!! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~!!
-
 module diagnostics
 !  use param
 !  use velvorproj
