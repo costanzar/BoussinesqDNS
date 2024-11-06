@@ -1,0 +1,34 @@
+name: Build and Deploy FORD Documentation
+
+on:
+  push:
+    branches:
+      - main  # or whichever branch you want to trigger the build
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install FORD
+        run: |
+          pip install ford
+
+      - name: Run FORD to generate documentation
+        run: |
+          ford Documentation.md
+      
+      - name: Upload documentation as artifact (optional)
+        uses: actions/upload-artifact@v2
+        with:
+          name: ford-docs
+          path: docs/

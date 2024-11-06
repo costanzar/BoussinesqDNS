@@ -7,7 +7,12 @@ build:
 
 python:
   install:
-    - requirements: docs/requirements.txt
-
+    - method: pip
+      path: .
+jobs:
+  pre_build:
+    - pip install ford
+  build:
+    - ford Documentation.md -o docs  # Build documentation on RTD
 sphinx:
-  configuration: docs/source/conf.py
+  builder: dirhtml
