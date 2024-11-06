@@ -6,4 +6,4 @@ build:
     python: "3.10"
   commands:
     - pip install ford  # Explicitly install FORD
-    - ford Documentation.md -o docs  # Run FORD to generate documentation into the docs/ directory
+    - ford Documentation.md -o docs --debug # Run FORD to generate documentation into the docs/ directory
