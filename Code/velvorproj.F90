@@ -32,7 +32,7 @@ CONTAINS
           do ikx=1,iktx
              if (L(ikx,iky,ikz).eq.1) then
                 kx = kxa(IKX)
-                k2 = max(kx*kx+ky*ky+kz*kz,1.e-15)
+                k2 = kx*kx + ky*ky + kz*kz + 1.e-15
                 c1 = ky*zz(ikx,iky,ikz) - kz*zy(ikx,iky,ikz)               
                 c2 = kz*zx(ikx,iky,ikz) - kx*zz(ikx,iky,ikz)
                 c3 = kx*zy(ikx,iky,ikz) - ky*zx(ikx,iky,ikz)               
@@ -101,7 +101,7 @@ CONTAINS
           do ikx = 1,iktx
              kx = kxa(ikx)     
              if (L(ikx,iky,ikz).eq.1) then
-                k2 = max(kx*kx + ky*ky + kz*kz, 1.e-15)
+                k2 = kx*kx + ky*ky + kz*kz + 1.e-15
                 c1 =  (k2-kx*kx)*zx(ikx,iky,ikz) - kx*ky*zy(ikx,iky,ikz) - kx*kz*zz(ikx,iky,ikz)
                 c2 = -ky*kx*zx(ikx,iky,ikz) + (k2-ky*ky)*zy(ikx,iky,ikz) - ky*kz*zz(ikx,iky,ikz)
                 c3 = -kz*kx*zx(ikx,iky,ikz) - kz*ky*zy(ikx,iky,ikz) + (k2-kz*kz)*zz(ikx,iky,ikz)
