@@ -17,7 +17,7 @@ subroutine printparameters()
      write(iuRESULT,*) 'Parameters: ----------------------------------------------'
      write(iuRESULT,*) '              N1,N2,N3 =  ', n1,n2,n3
      write(iuRESULT,*) '              L1,L2,L3 =  ', L1,L2,L3
-     write(iuRESULT,*) '              dx,dy,dz =  ', L1/n1,L2/n2,L3/n3
+     write(iuRESULT,*) '              dx,dy,dz =  ', L1/max(1,n1),L2/max(1,n2),L3/max(1,n3)
      write(iuRESULT,*) '              IKTX,Y,Z =  ', iktx,ikty,iktz
      write(iuRESULT,*) '                     KT = ', ktrunc_x,ktrunc_y,ktrunc_z
      write(iuRESULT,*) 'Order of Laplacian diss.=  ', ilap 
@@ -101,15 +101,15 @@ subroutine  pvcomp(zxk,zyk,zzk,ttk,uk,vk,wk,zxr,zyr,zzr,ttr,ur,vr,wr)
 !!$     enddo
 !!$  enddo
 
-  term1 = sum ((zzr/cor)*(zzr/cor))
-  term2 = sum ((wr/bf2)*(wr/bf2))
-  term3 = sum (((wr/bf2)*(zzr/cor))*((wr/bf2)*(zzr/cor)))
-  term4 = sum (((ur/bf2)*(zxr/cor)+(vr/bf2)*(zyr/cor))* &
-       ((ur/bf2)*(zxr/cor)+(vr/bf2)*(zyr/cor)))
+  term1 = sum ((zzr/max(1.0,cor))*(zzr/max(1.0,cor)))
+  term2 = sum ((wr/max(1.0,bf2))*(wr/max(1.0,bf2)))
+  term3 = sum (((wr/max(1.0,bf2))*(zzr/max(1.0,cor)))*((wr/max(1.0,bf2))*(zzr/max(1.0,cor))))
+  term4 = sum (((ur/max(1.0,bf2))*(zxr/max(1.0,cor))+(vr/max(1.0,bf2))*(zyr/max(1.0,cor)))* &
+       ((ur/max(1.0,bf2))*(zxr/max(1.0,cor))+(vr/max(1.0,bf2))*(zyr/max(1.0,cor))))
  
   
-  allterms=sum((zzr/cor+wr/bf2+(wr/bf2)*(zzr/cor)+(ur/bf2)*(zxr/cor)+(vr/bf2)*(zyr/cor)) &
-       *(zzr/cor+wr/bf2+(wr/bf2)*(zzr/cor)+(ur/bf2)*(zxr/cor)+(vr/bf2)*(zyr/cor)))
+  allterms=sum((zzr/max(1.0,cor)+wr/max(1.0,bf2)+(wr/max(1.0,bf2))*(zzr/max(1.0,cor))+(ur/max(1.0,bf2))*(zxr/max(1.0,cor))+(vr/max(1.0,bf2))*(zyr/max(1.0,cor))) &
+       *(zzr/max(1.0,cor)+wr/max(1.0,bf2)+(wr/max(1.0,bf2))*(zzr/max(1.0,cor))+(ur/max(1.0,bf2))*(zxr/max(1.0,cor))+(vr/max(1.0,bf2))*(zyr/max(1.0,cor))))
   
   call mpi_reduce(term1,tmp,1,MPI_REAL,MPI_SUM,0,MPI_COMM_WORLD,istatus)
   term1 = sqrt(tmp/float(n1*n2*n3))
