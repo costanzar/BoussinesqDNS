@@ -46,6 +46,7 @@ module realspacedumps2
   integer, save  :: uuhbrcid,uuvbrcid,vvhbrcid,vvvbrcid
   integer, save  :: qdhtotid,qdvtotid,qdhbrtid,qdvbrtid
   integer, save  :: iRScount   ! counter when real space fields are dumped
+  integer :: istatus
    
 
   !! Make internal variables and functions private
@@ -82,7 +83,11 @@ subroutine prep_realslice()
   if ((iver.gt.n2).or.(ihor.gt.n3)) then
      print*, '----------- the slice index out of bound -----------------'
   endif
-   if (mod(n2dp,nskipH).ne.0)  then
+  if (nskipH == 0) then
+     print*, '----------- nskipH cannot be zero -----------------'
+     call MPI_Abort(MPI_COMM_WORLD)
+  endif
+  if (mod(n2dp,nskipH).ne.0)  then
      print*, '----------- cannot handle this skipping: n2dp cannot be divided by nskipH -----------------'
   endif
 
@@ -161,10 +166,22 @@ subroutine prep_realslice()
   ! put values in spatial coordinate variables i.e. varxx and varyy vectors
   if (mype.eq.0) then
      ix1 = 0
-     iy1 = 0
+        if (n1 == 1) then
+           print*, '----------- n1 cannot be 1 -----------------'
+           call MPI_Abort(MPI_COMM_WORLD)
+        endif
+        xr = (real(ix)-1.0)/(real(n1)-1.0)*L1-L1/2.0
      iz1 = 0
-     do ix = nHstart, nHend, nskipH
-        ix1 = ix1 + 1
+        if (n2d == 1) then
+           print*, '----------- n2d cannot be 1 -----------------'
+           call MPI_Abort(MPI_COMM_WORLD)
+        endif
+        yr = (real(iy)-1.0)/(real(n2d)-1.0)*L2-L2/2.0
+        if (n3d == 1) then
+           print*, '----------- n3d cannot be 1 -----------------'
+           call MPI_Abort(MPI_COMM_WORLD)
+        endif
+        zr = (real(iz)-1.0)/(real(n3d)-1.0)*L3-L3/2.0
         xr = (real(ix)-1.0)/(real(n1)-1.0)*L1-L1/2.0
         istatus =  nf90_put_var(idslices,xxid,xr,start = (/ ix1 /))
         if (istatus.ne.0) print*,'Yo! we fucked up xr! Darn!'
