@@ -11,8 +11,6 @@ python:
       path: .
 jobs:
   pre_build:
-    - pip install ford
+    - pip install ford  # Install FORD
   build:
-    - ford Documentation.md -o docs  # Build documentation on RTD
-sphinx:
-  builder: dirhtml
+    - ford Documentation.md -o docs  # Run FORD to generate HTML files into the docs/ directory
