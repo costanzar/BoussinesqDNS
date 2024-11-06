@@ -6,4 +6,6 @@ author: Costanza Rodda
 preprocessor: true
 
 exclude: IO_netcdf.F90
+exclude: diagnostic.F90
+
 
