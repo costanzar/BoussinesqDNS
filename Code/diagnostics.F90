@@ -1,9 +1,14 @@
+!> \file diagnostics.F90
+!> \brief This module contains the diagnostics such as energy time series, energy and transfer spectra.
+!> 
+!> This module is one of the essential parts of the code that cannot be eliminated even in the lightest version.
+
 module diagnostics
 !  use param
 !  use velvorproj
   use nm_decomp
   implicit none
-  !! Wether or not keep eng.dat (time series of energys) or eps.dat (time series of dissipations)
+  !! Whether or not keep eng.dat (time series of energies) or eps.dat (time series of dissipations)
   integer, parameter :: keepENG=1, keepEPS=0
   !! ID for energy time series (eng.dat) and dissipation (eps.dat)
   integer, parameter :: iuENG = 41, iuEPS = 42
@@ -36,14 +41,14 @@ subroutine prep_diagnostics()
   include 'mpif.h'
 
   if (mype.eq.0) then
-     if (keepENG ==1) open (iuENG,file='eng.dat',    form='formatted')
-     if (keepEPS ==1) open (iuEPS,file='eps.dat',    form='formatted')
-     if (keepSPCH==1) open (iuSPCH,file='spch.dat',  form='formatted')
-     if (keepSPCZ==1) open (iuSPCZ,file='spcz.dat',  form='formatted')
-     if (keepSPC ==1) open (iuSPC ,file='spc.dat' ,  form='formatted')
-     if (keepTRNH==1) open (iuTRNH,file='trnh.dat',  form='formatted')
-     if (keepTRNZ==1) open (iuTRNZ,file='trnz.dat',  form='formatted')
-     if (keepTRN ==1) open (iuTRN ,file='trn.dat' ,  form='formatted')
+    if (keepENG == 1) open (iuENG, file='eng.dat', form='formatted')
+    if (keepEPS == 1) open (iuEPS, file='eps.dat', form='formatted')
+    if (keepSPCH == 1) open (iuSPCH, file='spch.dat', form='formatted')
+    if (keepSPCZ == 1) open (iuSPCZ, file='spcz.dat', form='formatted')
+    if (keepSPC == 1) open (iuSPC, file='spc.dat', form='formatted')
+    if (keepTRNH == 1) open (iuTRNH, file='trnh.dat', form='formatted')
+    if (keepTRNZ == 1) open (iuTRNZ, file='trnz.dat', form='formatted')
+    if (keepTRN == 1) open (iuTRN, file='trn.dat', form='formatted')
   endif
   
   return
@@ -307,8 +312,7 @@ subroutine spec (zx,zy,zz,tt,ux,uy,uz,ge,g1,g2,zxwv,zywv,zzwv,ttwv,ispec,iu)
   elseif (ispec.eq.3) then
     j0 = 0
   else
-    print*,"ispec error"
-    stop
+    error stop "ispec error"
   endif
 
   N     = 0
