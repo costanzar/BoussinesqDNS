@@ -6,4 +6,4 @@ build:
   commands:
     - pip install -r requirements.txt
     - mkdir -p $READTHEDOCS_OUTPUT/html/
-    - ford Documentation.md -o docs --debug
+    - ford Documentation.md -o docs/_build/html --debug
