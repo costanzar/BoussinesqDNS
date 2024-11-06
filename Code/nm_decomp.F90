@@ -54,8 +54,16 @@ subroutine wtoab(zx,zy,zz,tt,geok,gw1k,gw2k,u,v,w)
             bk    = aj*tt(ikx,iky,ikz)
             
             zk = zz(ikx,iky,ikz)
-            dk = (wk/kz) * div
-            tk = (wkh/bf) * bk
+            if (kz /= 0.0) then
+              dk = (wk/kz) * div
+            else
+              dk = 0.0
+            endif
+            if (bf /= 0.0) then
+              tk = (wkh/bf) * bk
+            else
+              tk = 0.0
+            endif
             
             norm  = omega*wk
             geok(ikx,iky,ikz) = (bf*wkh*zk + zi*cor*kz*tk)/norm
@@ -144,11 +152,28 @@ subroutine atowb(geok,gw1k,gw2k,zx,zy,zz,tt,u,v,w)
           t1k = - bf   * wkh    * gn
           gn  = gw2k(ikx,iky,ikz) / (sqrt2*omega*wk)
           z2k = - zi  * cor * kz * gn
-          d2k = omega * wk     * gn
-          t2k = + bf   * wkh   * gn
-          
-          zk = zgk + z1k + z2k
-          dk = dgk + d1k + d2k
+            if (wk /= 0.0) then
+              div = dk*kz/wk
+            else
+              div = 0.0
+            endif
+            if (wkh2 /= 0.0) then
+              u(ikx,iky,ikz)  = +zi*(ky*zk-kx*div)/wkh2             
+              v(ikx,iky,ikz)  = -zi*(kx*zk+ky*div)/wkh2             
+            else
+              u(ikx,iky,ikz)  = cmplx(0.,0.)
+              v(ikx,iky,ikz)  = cmplx(0.,0.)
+            endif
+            if (kz /= 0.0) then
+              w(ikx,iky,ikz)  = zi*div/kz
+            else
+              w(ikx,iky,ikz)  = cmplx(0.,0.)
+            endif
+            if (aj*wkh /= 0.0) then
+              tt(ikx,iky,ikz) = bf*tk/(aj*wkh)
+            else
+              tt(ikx,iky,ikz) = cmplx(0.,0.)
+            endif
           tk = tgk + t1k + t2k
                
           if (wkhn.gt.1.e-10) then
