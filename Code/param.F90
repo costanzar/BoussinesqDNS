@@ -133,7 +133,7 @@ module param
 ! -----------------------------------------------------------------
 ! frequency of outputing diagnostics
   integer, parameter :: ndiagout = 24                               ! number of times data dumped
-  integer, parameter :: ndiagevery = floor(nstop/float(ndiagout))  ! do diag. every ndiagevery timesteps
+  integer, parameter :: ndiagevery = merge(floor(nstop/float(ndiagout)), 1, nstop /= 0)  ! do diag. every ndiagevery timesteps
 ! -----------------------------------------------------------------
 
 ! -----------------------------------------------------------------
@@ -143,7 +143,7 @@ module param
 ! -----------------------------------------------------------------
   integer, parameter :: realspace_flag = 0                        ! = 0 nothing dumped & realspacedumps.F90 not used
   integer, parameter :: nrsout = 1                                ! number of time slices dumped
-  integer, parameter :: nrsevery=floor(nstop/float(nrsout))       ! dump slices every nrsevery timesteps
+  integer, parameter :: nrsevery = merge(floor(nstop/float(nrsout)), 1, nstop /= 0)  ! dump slices every nrsevery timesteps
   ! starting and end points in slices
   integer, parameter :: nHstart=1, nHend=n1
   integer, parameter :: nVstart=1, nVend=n3
